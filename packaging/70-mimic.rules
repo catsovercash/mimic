@@ -1,0 +1,15 @@
+# Mimic — grant the active local desktop user access to the input devices it
+# needs. This is intentionally narrower than adding the user to the "input"
+# group: the ACL exists only while that user owns an active local session.
+#
+# Security note: read access to evdev devices permits observing all keyboard
+# and pointer input. Only install this if you trust the user's session.
+
+# uinput virtual-device creation for playback.
+KERNEL=="uinput", SUBSYSTEM=="misc", GROUP="input", MODE="0660", TAG+="uaccess", OPTIONS+="static_node=uinput"
+
+# Event devices used for recording.
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_KEYBOARD}=="1", TAG+="uaccess"
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_MOUSE}=="1", TAG+="uaccess"
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_TOUCHPAD}=="1", TAG+="uaccess"
+SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_POINTINGSTICK}=="1", TAG+="uaccess"

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Mimic
+GenericName=Macro Recorder
+Comment=Record and replay keyboard and mouse macros on KDE Plasma Wayland
+Exec=mimic %f
+TryExec=mimic
+Icon=io.github.mimic.Mimic
+Terminal=false
+Categories=Utility;
+Keywords=macro;recorder;automation;keyboard;mouse;
+StartupWMClass=io.github.mimic.Mimic
+MimeType=application/x-mimic-recording;
